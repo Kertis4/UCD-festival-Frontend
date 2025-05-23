@@ -76,26 +76,14 @@ function downloadData(pdfBlob) {
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
 }
-document.getElementById("generateReportBtn").addEventListener("click", () => {
-  const plotData = document.getElementById("plotData").checked;
-  const showLogic = document.getElementById("showLogic").checked;
 
-  const url = `/generate_report?plotData=${plotData}&showLogic=${showLogic}`;
-
-  fetch(url)
-    .then(response => {
-      // handle the response, e.g., show a message or plot
-    })
-    .catch(error => console.error(error));
-});
 // Event listener for download button
 document.getElementById("downloadBtn").addEventListener("click", async () => {
   const federal = document.querySelector("#federalInput").value;
   const indicator = document.querySelector("#indicatorInput").value;
   const startYear = document.getElementById("year1Input").value;
   const endYear = document.getElementById("year2Input").value;
-  const plotData = document.getElementById("plotData").checked;
-  const showLogic = document.getElementById("showLogic").checked;
+
   if (
     federal === "Federal" ||
     indicator === "State" ||
@@ -128,6 +116,17 @@ function scrollToSection(sectionId) {
   if (section) {
     section.scrollIntoView({ behavior: "smooth" });
   }
+}
+function showPlot() {
+  // Show plot, hide query text
+  document.getElementById('plotSection').style.display = 'block';
+  document.getElementById('logicSection').style.display = 'none';
+}
+
+function showLogic() {
+  // Hide plot, show query text
+  document.getElementById('plotSection').style.display = 'none';
+  document.getElementById('logicSection').style.display = 'block';
 }
 
 async function populateFederalStates() {
@@ -219,77 +218,7 @@ async function populateIndicators() {
   }
 }
 
-
-  try {
-    const response = await fetch("/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plotData, showLogic })
-    });
-
-    const data = await response.json();
-    document.getElementById("plotImage").src = data.plot_url;
-    document.getElementById("logicText").textContent = data.logic_text;
-
-    document.getElementById("plotSection").style.display = "block";
-    document.getElementById("logicSection").style.display = "none";
-  } catch (err) {
-    console.error("Error fetching report:", err);
-  }
-;
-
-// Toggle between plot and logic view
-document.querySelectorAll("input[name='viewToggle']").forEach((radio) => {
-  radio.addEventListener("change", (e) => {
-    const value = e.target.value;
-    document.getElementById("plotSection").style.display = value === "plot" ? "block" : "none";
-    document.getElementById("logicSection").style.display = value === "logic" ? "block" : "none";
-  });
-});
 // Call the function to populate the dropdown when the
 
 // Call the function to populate the dropdown when the page loads
 document.addEventListener("DOMContentLoaded", populateIndicators());
-///////////////////////////////////////////////////////
-//
-///////////////////////////////////////////////////////
-
- 
-
-  // Check if neither checkbox is selected
-  if (!plotData && !showLogic) {
-    document.getElementById("plotSection").style.display = "none";
-    document.getElementById("logicSection").style.display = "none";
-    document.getElementById("fallbackMessage").style.display = "block";  // Add this section in your HTML
-    return;
-  }
-
-  // Hide fallback if previously shown
-  document.getElementById("fallbackMessage").style.display = "none";
-
-  try {
-    const response = await fetch("/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ plotData, showLogic })
-    });
-
-    const data = await response.json();
-
-    if (plotData) {
-      document.getElementById("plotImage").src = data.plot_url;
-      document.getElementById("plotSection").style.display = "block";
-    } else {
-      document.getElementById("plotSection").style.display = "none";
-    }
-
-    if (showLogic) {
-      document.getElementById("logicText").textContent = data.logic_text;
-      document.getElementById("logicSection").style.display = "block";
-    } else {
-      document.getElementById("logicSection").style.display = "none";
-    }
-
-  } catch (err) {
-    console.error("Error fetching report:", err);
-  }
