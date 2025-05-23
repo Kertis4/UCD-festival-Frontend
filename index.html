@@ -1,0 +1,939 @@
+<DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ByteMe</title>
+        <style>
+            html {
+  scroll-padding-top: 50px;
+}
+            * {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                scroll-behavior: smooth;
+            }
+
+            .scroll-button {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.8);
+                border: none;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: background-color 0.3s;
+            }
+
+            .scroll-button:hover {
+                background-color: rgba(255, 255, 255, 1);
+            }
+
+            .scroll-button svg {
+                width: 24px;
+                height: 24px;
+                fill: rgba(38, 100, 209, 255);
+            }
+
+           .section1 {
+    height: calc(100vh - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(34, 139, 87, 1); /* fallback */
+    padding: 5% 0;
+    margin: 0;
+    background:
+        linear-gradient(to bottom right,
+            rgba(34, 139, 87, 0.95),   /* dark natural green */
+            rgba(60, 179, 113, 0.75)), /* softer contrast */
+        url("https://wallpaperaccess.com/full/760508.jpg") no-repeat center center;
+    background-size: cover;
+}
+ 
+
+
+            .section2 {
+                display: flex;
+                width: 100%;
+}
+                   
+            
+
+            .section2a {
+                background-size: 100%;
+                height: 600px;
+                background-repeat: no-repeat;
+                flex: 1;
+                text-align: center;
+                
+            }
+
+
+            .section3 {
+            margin-top: 750px;
+            padding: 20px;
+            background: linear-gradient(to bottom right,
+                rgba(34, 139, 87, 0.95),   /* dark natural green */
+                rgba(60, 179, 113, 0.75)), /* softer contrast */}
+            body.section3  {
+                font-family: Arial, sans-serif;
+                background-color: rgb(251, 247, 245);
+                color: rgba(100, 100, 100, 0.8);
+            }
+            .section3 h1 {
+                text-align: center;
+                font-size: 3em;
+                font-weight: 400;
+                color: rgba(34, 139, 87, 1);
+                margin: 100px 0;
+                letter-spacing: 2px;
+                text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+                font-family: 'Poppins', sans-serif;
+            }
+
+            @media (max-width: 768px) {
+                .section3 h1 {
+                    font-size: 2.2em;
+                }
+            }
+
+            .section3 .team-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .section3 .team-member {
+                background-color: rgb(251, 247, 245);
+                border-radius: 12px;
+                overflow: hidden;
+                padding: 0;
+                width: calc(20% - 20px);
+                min-width: 200px;
+                max-width: 300px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+
+            .section3 .team-member img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                object-fit: cover;
+                margin: 20px auto;
+                display: block;
+            }
+
+            .section3 .team-content {
+                padding: 20px;
+            }
+
+            .section3 .name {
+                font-size: 1.5em;
+                color: rgba(38, 100, 209, 255);
+                margin-bottom: 10px;
+            }
+
+            .section3 .role {
+                font-size: 1.2em;
+                color: #f6a800;
+                margin-bottom: 20px;
+            }
+
+            .section3 .description {
+                font-size: 1em;
+                color: #777;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 1200px) {
+                .section3 .team-member {
+                    width: calc(33.33% - 20px);
+                }
+            }
+
+            @media (max-width: 768px) {
+                .section3 .team-container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .section3 .team-member {
+                    width: 90%;
+                    max-width: 400px;
+                }
+            }
+
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+            .header {
+                font-family: 'Montserrat', sans-serif;
+                font-size: 4rem;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: #ffffff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+                position: relative;
+                overflow: hidden;
+            }
+
+           .header span {
+    display: inline-block;
+    vertical-align: baseline; /* or try middle */
+    position: relative;
+    top: 0;
+    line-height: inherit;
+    font-size: inherit;
+    color : #f6a800;
+    
+}
+
+
+
+            .header::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(90deg, rgba(34, 139, 87, 1), #f6a800);
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.5s ease;
+            }
+
+            .header:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            .header:hover span {
+                transform: translateY(-0.2em);
+            }
+
+            .navigation {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                background: linear-gradient(145deg, #228B57, #F6A800); 
+                height: 50px;
+                display: flex;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                width: 100%;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .navigationitem {
+                float: left;
+                height: 100%;
+            }
+
+            .navigationitem a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                color: white;
+                padding: 0 16px;
+                height: 100%;
+            }
+
+            .navigationitem a svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .navigationitem a:hover {
+                background-color: rgba(234, 234, 234, 0.548);
+                color: black;
+            }
+
+            .navbar-container {
+                background-color: #fff;
+                height: 180px;
+            }
+
+
+            .navbar {
+                overflow: hidden;
+                display: flex;
+                height: 70px;
+
+
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(to right, rgba(34, 139, 87, 1), rgba(52, 97, 176, 0.3));
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .dropdown {
+                float: center;
+                overflow: hidden;
+                margin-right: 15px;
+            }
+
+            .dropdown .dropbtn {
+                font-size: 16px;
+                border: none;
+                outline: none;
+                color: white;
+                padding: 14px 20px;
+                border-radius: 25px;
+                background-color: rgba(34, 139, 87, 1);
+                font-family: inherit;
+                margin: 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar a:hover,
+            .dropdown:hover .dropbtn {
+                background-color: rgba(34, 139, 87, 1);
+                transform: translateY(-2px);
+                box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #ffffff;
+                min-width: 180px;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                z-index: 1;
+                border-radius: 10px;
+            }
+
+            .dropdown-content a {
+                float: none;
+                color: #333;
+                text-decoration: none;
+                padding: 14px 18px;
+                display: block;
+                text-align: left;
+                transition: background-color 0.3s ease;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f0f0f0;
+                color: rgba(34, 139, 87, 1)
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .dropdown-content input[type="text"] {
+                padding: 10px;
+                margin: 10px;
+
+
+                font-size: 14px;
+                border: 1px solid #ddd;
+                width: calc(100% - 20px);
+                box-sizing: border-box;
+                border-radius: 5px;
+            }
+            .options {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #222;
+}
+
+/* From Uiverse.io by PriyanshuGupta28 */ 
+.checkbox-wrapper * {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-wrapper label {
+  --size: 50px;
+  --shadow: calc(var(--size) * .07) calc(var(--size) * .1);
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+  background-color: #2E7D32;
+  background-image: linear-gradient(43deg, #2E7D32 0%, #66BB6A 46%, #FFD54F 100%);
+  border-radius: 50%;
+  box-shadow: 0 var(--shadow) #a5d6a7;
+  cursor: pointer;
+  transition: 0.2s ease transform, 0.2s ease background-color,
+      0.2s ease box-shadow;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.checkbox-wrapper label:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  width: calc(var(--size) * .7);
+  height: calc(var(--size) * .7);
+  margin: 0 auto;
+  background-color: #fff;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: inset 0 var(--shadow) #a5d6a7;
+  transition: 0.2s ease width, 0.2s ease height;
+}
+
+.checkbox-wrapper label:hover:before {
+  width: calc(var(--size) * .55);
+  height: calc(var(--size) * .55);
+  box-shadow: inset 0 var(--shadow) #81c784;
+}
+
+.checkbox-wrapper label:active {
+  transform: scale(0.9);
+}
+
+.checkbox-wrapper .tick_mark {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: calc(var(--size) * -.05);
+  width: calc(var(--size) * .6);
+  height: calc(var(--size) * .6);
+  margin: 0 auto;
+  margin-left: calc(var(--size) * .14);
+  transform: rotateZ(-40deg);
+}
+
+.checkbox-wrapper .tick_mark:before,
+  .checkbox-wrapper .tick_mark:after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  border-radius: 2px;
+  opacity: 0;
+  transition: 0.2s ease transform, 0.2s ease opacity;
+}
+
+.checkbox-wrapper .tick_mark:before {
+  left: 0;
+  bottom: 0;
+  width: calc(var(--size) * .1);
+  height: calc(var(--size) * .3);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+  transform: translateY(calc(var(--size) * -.68));
+}
+
+.checkbox-wrapper .tick_mark:after {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(var(--size) * .1);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+  transform: translateX(calc(var(--size) * .78));
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label {
+  background-color: #2E7D32;
+  background-image: linear-gradient(43deg, #2E7D32 0%, #66BB6A 46%, #FFD54F 100%);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label:before {
+  width: 0;
+  height: 0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label .tick_mark:before,
+  .checkbox-wrapper input[type="checkbox"]:checked + label .tick_mark:after {
+  transform: translate(0);
+  opacity: 1;
+}
+.checkboxes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-label {
+  color: black;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+
+
+            #downloadBtn {
+                padding: 45px 100px;
+                border-radius: 50px;
+                background: linear-gradient(145deg, rgba(34, 139, 87, 1), rgba(52, 97, 176, 0.3));
+                border: none;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 26px;
+                font-weight: bold;
+                margin: 40px auto;
+                cursor: pointer;
+                box-shadow: 0 10px 20px rgba(38, 100, 209, 0.3);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+               
+            }
+
+            #downloadBtn:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                transition: all 0.5s ease;
+            }
+
+            #downloadBtn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px rgba(38, 100, 209, 0.4);
+                background: linear-gradient(145deg, rgba(52, 97, 176, 0.3), rgba(34, 139, 87, 1));
+            }
+
+            #downloadBtn:hover:before {
+                left: 100%;
+            }
+
+            #downloadBtn:active {
+                transform: translateY(1px);
+                box-shadow: 0 5px 10px rgba(38, 100, 209, 0.2);
+            }
+
+            .comment-container {
+                display: flex;
+                justify-content: center;
+                margin: 20px 0;
+            }
+
+            .comment-box {
+                margin: 10% 2px 4px 2px;
+                width: 40%;
+                height: 100px;
+                padding: 15px;
+                background-color: #f0f0f0;
+                border: 2px solid rgba(34, 139, 87, 1);
+                border-radius: 10px;
+                resize: vertical;
+                font-family: Arial, sans-serif;
+                transition: all 0.3s ease;
+            }
+
+            .comment-box:focus {
+                outline: none;
+                box-shadow: 0 0 10px rgba(38, 100, 209, 0.3);
+                border-color: #f6a800;
+            }
+
+            .comment-box::placeholder {
+                color: #999;
+        
+            }
+            
+ .report-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+
+.output-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.content-box {
+  width: 600px;  /* fixed width */
+  height: auto;  /* let height expand */
+  overflow: hidden; /* hides scrollbars, but content might be clipped */
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+#plotSection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* or cover if cropping is fine */
+}
+.radio-input input {
+  display: none;
+}
+
+/* From Uiverse.io by Ghost-aft */ 
+.radio-input input {
+  display: none;
+}
+
+.radio-input {
+  --container_width: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #000000;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 1px solid rgba(53, 52, 52, 0.226);
+}
+
+.radio-input label {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 14px;
+}
+
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 2);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: 0.15s ease;
+}
+
+.radio-input label:has(input:checked) {
+  color: #fff;
+}
+
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: rgba(34, 139, 87, 1);
+  display: inline-block;
+}
+
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0 / 2));
+}
+
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1 / 2));
+}
+
+        </style>
+
+    </head>
+
+    <body>
+        <ul class="navigation">
+            <li class="navigationitem">
+                <a onclick="scrollToTop()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"
+                        style="width: 30px; height: 30px; vertical-align: middle;">
+                        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                    </svg>
+                </a>
+            </li>
+            <li class="navigationitem"><a onclick="scrollToSection('section2')">Generate a Report</a></li>
+            <li class="navigationitem"><a onclick="scrollToSection('section3')">Our Team</a></li>
+        </ul>
+
+        <div class="section1">
+            <h1 class="header"><span>I</span>rish <span>I</span>nsight</h1>
+        </div>
+        <div class="section2" id="section2">
+            <button class="scroll-button" onclick="scrollToSection('section2')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z" />
+                </svg>
+            </button>
+            <div class="section2a">
+                <div class="navbar">
+                    <div class="dropdown">
+                        <button class="dropbtn">Topic</button>
+                        <div class="dropdown-content dropdown-content-indicators">
+                            <input type="text" id="indicatorInput" placeholder="Enter Indicator" />
+                            <a href="javascript:void(0);"
+                                onclick="selectOptionInput('indicator', 'Indicator 1')">Indicator 1</a>
+                            <a href="javascript:void(0);"
+                                onclick="selectOptionInput('indicator', 'Indicator 2')">Indicator 2</a>
+                            <a href="javascript:void(0);"
+                                onclick="selectOptionInput('indicator', 'Indicator 3')">Indicator 3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">County</button>
+                        <div class="dropdown-content-federal dropdown-content">
+                            <input type="text" id="federalInput" placeholder="Enter Federal" />
+                            <a href="javascript:void(0);" onclick="selectOptionInput('federal', 'Federal 1')">Federal
+                                1</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('federal', 'Federal 2')">Federal
+                                2</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('federal', 'Federal 3')">Federal
+                                3</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Start Year</button>
+                        <div class="dropdown-content">
+                            <input type="text" id="year1Input" placeholder="Enter Year 1" />
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2023')">2023</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2022')">2022</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2021')">2021</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2020')">2020</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2019')">2019</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2018')">2018</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2017')">2017</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2016')">2016</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2015')">2015</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2014')">2014</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2013')">2013</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2012')">2012</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2011')">2011</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2010')">2010</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2009')">2009</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2008')">2008</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2007')">2007</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2006')">2006</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">End Year</button>
+                        <div class="dropdown-content">
+                            <input type="text" id="year2Input" placeholder="Enter Year 2" />
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2023')">2023</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2022')">2022</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2021')">2021</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2020')">2020</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2019')">2019</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2018')">2018</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2017')">2017</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2016')">2016</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2015')">2015</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2014')">2014</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2013')">2013</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2012')">2012</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2011')">2011</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2010')">2010</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2009')">2009</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2008')">2008</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2007')">2007</a>
+                            <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2006')">2006</a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                    <div class="comment-container">
+                        <textarea class="comment-box" placeholder="Add a comment..."></textarea>
+                    </div>
+
+
+</div>
+
+<div class="checkboxes">
+  <div class="checkbox-wrapper">
+    <input type="checkbox" id="plotDataCheckbox">
+    <label for="plotDataCheckbox">
+      <div class="tick_mark"></div>
+    </label>
+    <span class="checkbox-label">Plot data with report</span>
+  </div>
+
+  <div class="checkbox-wrapper">
+    <input type="checkbox" id="showQueryCheckbox">
+    <label for="showQueryCheckbox">
+      <div class="tick_mark"></div>
+    </label>
+    <span class="checkbox-label">Show querying logic</span>
+  </div>
+</div>
+
+<div class="report-controls">
+  <button id="downloadBtn">Generate Report</button>
+
+  <div class="output-toggle">
+  <div class="content-box" id="contentDisplay">
+    <div id="plotSection" style="text-align: center;">
+      <img
+        src="https://tse1.mm.bing.net/th?id=OIP.VaJ28gvQFlmqKfga7TIZMAHaEt&pid=Api&P=0&h=180"
+        alt="Plot here"
+        style="max-width: 100%; height: auto; display: inline-block;"
+      />
+    </div>
+    <div id="logicSection" style="display: none;">
+      <pre>
+-- SQL QUERY OUTPUT WILL GO HERE --
+      </pre>
+    </div>
+  </div>
+</div>
+    
+    <div class="radio-input">
+      <label>
+        <input type="radio" name="viewToggle" value="plot" checked onclick="showPlot()" />
+        Plot
+      </label>
+      <label>
+        <input type="radio" name="viewToggle" value="logic" onclick="showLogic()" />
+        Query Logic
+      </label>
+      <span class="selection"></span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+        </div>
+        </div>
+        <div class="section3" id="section3">
+            <h1>
+                Meet the Team
+                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+                    rel="stylesheet" />
+            </h1>
+
+            <div class="team-container">
+                <!-- Eoin Curtis -->
+                <div class="team-member" id="eoin">
+                    <img src="https://i.imgur.com/jS654IY.jpeg" alt="Eoin Curtis" />
+                    <div class="team-content">
+                        <div class="name">Eoin Curtis</div>
+                        <div class="role">Project Manager</div>
+                        <div class="description">
+                            <p>
+                                Project managment and frontend development are Eoin's
+                                responsibilities.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kilian Plapp -->
+                <div class="team-member" id="kilian">
+                    <img src="https://i.imgur.com/5cYFSyy.jpeg" alt="Kilian Plapp" />
+                    <div class="team-content">
+                        <div class="name">Kilian Plapp</div>
+                        <div class="role">Lead Developer</div>
+                        <div class="description">
+                            <p>
+                                Backend development and technical architecture are
+                                Kilian's responsibilities. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emma Fowler -->
+                <div class="team-member" id="emma">
+                    <img src="https://i.imgur.com/fAAzVTO.jpeg" alt="Emma Fowler" />
+                    <div class="team-content">
+                        <div class="name">Emma Fowler</div>
+                        <div class="role">Sociological Insight Specialist</div>
+                        <div class="description">
+                            <p>
+                                Emma is our Sociological Insight Specialist and
+                                Constantly reviewing reports and reprompting the AI
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Noah Porter -->
+                <div class="team-member" id="noah">
+                    <img src="https://i.imgur.com/U9mzzXL.jpeg" alt="Noah Porter" />
+                    <div class="team-content">
+                        <div class="name">Noah Porter</div>
+                        <div class="role">Creative Director</div>
+                        <div class="description">
+                            <p>
+                                Noah is the Creative Director, a true
+                                problem-finder with a talent for language
+                                processing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Harry Alderton -->
+                <div class="team-member" id="harry">
+                    <img src="https://i.imgur.com/2jHXtNr.jpeg" alt="Harry Alderton" />
+                    <div class="team-content">
+                        <div class="name">Harry Alderton</div>
+                        <div class="role">Lead Web Designer</div>
+                        <div class="description">
+                            <p>
+                                Harry is the Lead Web Designer, responsible for
+                                making critical design choices and ensuring that
+                                all elements integrate seamlessly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    
+    </body>
+
+    </html>
