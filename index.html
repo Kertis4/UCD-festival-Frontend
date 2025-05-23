@@ -610,11 +610,15 @@
   overflow: hidden; /* hides scrollbars, but content might be clipped */
   margin: 0 auto;
   border: 1px solid #ccc;
+  padding: 20px;
+  min-height: 250px; /* or whatever height you want */
+  box-sizing: border-box;
 }
+
 #plotSection img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* or cover if cropping is fine */
+  object-fit: cover; 
 }
 .radio-input input {
   display: none;
@@ -814,12 +818,17 @@
   <div class="output-toggle">
   <div class="content-box" id="contentDisplay">
     <div id="plotSection" style="text-align: center;">
-      <img
-        src="https://tse1.mm.bing.net/th?id=OIP.VaJ28gvQFlmqKfga7TIZMAHaEt&pid=Api&P=0&h=180"
-        alt="Plot here"
-        style="max-width: 100%; height: auto; display: inline-block;"
-      />
-    </div>
+     <div id="plotSection" style="text-align: center;">
+  <img
+    src="https://tse1.mm.bing.net/th?id=OIP.VaJ28gvQFlmqKfga7TIZMAHaEt&pid=Api&P=0&h=180"
+    alt="Plot here"
+    style="max-width: 100%; height: auto; display: inline-block;"
+  />
+</div>
+
+<div id="logicSection" style="display: none; text-align: center; font-size: 18px; color: #555;">
+  Query place holder
+</div>
     <div id="logicSection" style="display: none;">
       <pre>
 -- SQL QUERY OUTPUT WILL GO HERE --
