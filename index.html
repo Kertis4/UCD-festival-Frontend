@@ -598,28 +598,39 @@
 
 
 .output-toggle {
-  display: flex;
+  display: fixed;
   flex-direction: column;
   align-items: center;
   gap: 16px;
 }
 
 .content-box {
-  width: 600px;  /* fixed width */
-  height: auto;  /* let height expand */
-  overflow: hidden; /* hides scrollbars, but content might be clipped */
+  position: relative;
+  width: 1000px;
+  height: 500px; /* or whatever fixed height works */
   margin: 0 auto;
+  margin-top: 40px;
   border: 1px solid #ccc;
-  padding: 20px;
-  min-height: 250px; /* or whatever height you want */
+  padding: 0;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-#plotSection img {
+.toggle-section {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; 
 }
+
+#plotSection img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
 .radio-input input {
   display: none;
 }
@@ -640,6 +651,7 @@
   width: var(--container_width);
   overflow: hidden;
   border: 1px solid rgba(53, 52, 52, 0.226);
+  margin-bottom: 30px;
 }
 
 .radio-input label {
@@ -715,7 +727,7 @@
                     <div class="dropdown">
                         <button class="dropbtn">Topic</button>
                         <div class="dropdown-content dropdown-content-indicators">
-                            <input type="text" id="indicatorInput" placeholder="Enter Indicator" />
+                            <input type="text" id="indicatorInput" placeholder="Enter Indicator" onkeyup="filterDropdown('indicatorDropdown', 'indicatorInput')" />
                             <a href="javascript:void(0);"
                                 onclick="selectOptionInput('indicator', 'Indicator 1')">Indicator 1</a>
                             <a href="javascript:void(0);"
@@ -726,8 +738,8 @@
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">County</button>
-                        <div class="dropdown-content-federal dropdown-content">
-                            <input type="text" id="federalInput" placeholder="Enter Federal" />
+                     <div class="dropdown-content-federal dropdown-content" id="federalDropdown">
+                            <input type="text" id="fedralInput" placeholder="Enter Federal" onkeyup="filterDropdown('federalDropdown', 'federalInput')" />
                             <a href="javascript:void(0);" onclick="selectOptionInput('federal', 'Federal 1')">Federal
                                 1</a>
                             <a href="javascript:void(0);" onclick="selectOptionInput('federal', 'Federal 2')">Federal
@@ -738,8 +750,8 @@
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">Start Year</button>
-                        <div class="dropdown-content">
-                            <input type="text" id="year1Input" placeholder="Enter Year 1" />
+                        <div class="dropdown-content" id="year1Dropdown">
+                            <input type="text" id="year1Input" placeholder="Enter year1" onkeyup="filterDropdown('year1Dropdown', 'year1Input')" />
                             <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2023')">2023</a>
                             <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2022')">2022</a>
                             <a href="javascript:void(0);" onclick="selectOptionInput('year1', '2021')">2021</a>
@@ -762,8 +774,8 @@
                     </div>
                     <div class="dropdown">
                         <button class="dropbtn">End Year</button>
-                        <div class="dropdown-content">
-                            <input type="text" id="year2Input" placeholder="Enter Year 2" />
+                        <div class="dropdown-content" id="year2Dropdown">
+                            <input type="text" id="year2Input" placeholder="Enter year2" onkeyup="filterDropdown('year2Dropdown', 'year2Input')" />
                             <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2023')">2023</a>
                             <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2022')">2022</a>
                             <a href="javascript:void(0);" onclick="selectOptionInput('year2', '2021')">2021</a>
@@ -792,8 +804,7 @@
                     </div>
 
 
-</div>
-
+<!-- Checkboxes Section -->
 <div class="checkboxes">
   <div class="checkbox-wrapper">
     <input type="checkbox" id="plotDataCheckbox">
@@ -812,137 +823,38 @@
   </div>
 </div>
 
-<div class="report-controls">
-  <button id="downloadBtn">Generate Report</button>
-
-  <div class="output-toggle">
+<!-- Toggleable Output Section -->
+<div class="output-toggle">
   <div class="content-box" id="contentDisplay">
-    <div id="plotSection" style="text-align: center;">
-     <div id="plotSection" style="text-align: center;">
-  <img
-    src="https://tse1.mm.bing.net/th?id=OIP.VaJ28gvQFlmqKfga7TIZMAHaEt&pid=Api&P=0&h=180"
-    alt="Plot here"
-    style="max-width: 100%; height: auto; display: inline-block;"
-  />
+    
+   <div id="plotSection" class="toggle-section">
+  <img id="plotImage"
+       src="{{ img_uri }}"
+       alt="Plot"
+       style="max-width: 100%; height: auto;" />
 </div>
-
-<div id="logicSection" style="display: none; text-align: center; font-size: 18px; color: #555;">
-  Query place holder
-</div>
-    <div id="logicSection" style="display: none;">
-      <pre>
--- SQL QUERY OUTPUT WILL GO HERE --
-      </pre>
+    <div id="logicSection" class="toggle-section" style="display: none;">
+      <p style="text-align: center; font-size: 18px; color: #555; padding: 40px;">Query placeholder</p>
     </div>
   </div>
 </div>
-    
-    <div class="radio-input">
-      <label>
-        <input type="radio" name="viewToggle" value="plot" checked onclick="showPlot()" />
-        Plot
-      </label>
-      <label>
-        <input type="radio" name="viewToggle" value="logic" onclick="showLogic()" />
-        Query Logic
-      </label>
-      <span class="selection"></span>
-    </div>
+
+<!-- Centered Custom Radio Toggle (OUTSIDE output-toggle) -->
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+  <div class="radio-input">
+    <label>
+      <input type="radio" name="viewToggle" value="plot" checked onclick="showPlot()" />
+      Plot
+    </label>
+    <label>
+      <input type="radio" name="viewToggle" value="logic" onclick="showLogic()" />
+      Query Logic
+    </label>
+    <span class="selection"></span>
   </div>
 </div>
+
 </div>
-
-
-
-        </div>
-        </div>
-        <div class="section3" id="section3">
-            <h1>
-                Meet the Team
-                <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-                    rel="stylesheet" />
-            </h1>
-
-            <div class="team-container">
-                <!-- Eoin Curtis -->
-                <div class="team-member" id="eoin">
-                    <img src="https://i.imgur.com/jS654IY.jpeg" alt="Eoin Curtis" />
-                    <div class="team-content">
-                        <div class="name">Eoin Curtis</div>
-                        <div class="role">Project Manager</div>
-                        <div class="description">
-                            <p>
-                                Project managment and frontend development are Eoin's
-                                responsibilities.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kilian Plapp -->
-                <div class="team-member" id="kilian">
-                    <img src="https://i.imgur.com/5cYFSyy.jpeg" alt="Kilian Plapp" />
-                    <div class="team-content">
-                        <div class="name">Kilian Plapp</div>
-                        <div class="role">Lead Developer</div>
-                        <div class="description">
-                            <p>
-                                Backend development and technical architecture are
-                                Kilian's responsibilities. 
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Emma Fowler -->
-                <div class="team-member" id="emma">
-                    <img src="https://i.imgur.com/fAAzVTO.jpeg" alt="Emma Fowler" />
-                    <div class="team-content">
-                        <div class="name">Emma Fowler</div>
-                        <div class="role">Sociological Insight Specialist</div>
-                        <div class="description">
-                            <p>
-                                Emma is our Sociological Insight Specialist and
-                                Constantly reviewing reports and reprompting the AI
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Noah Porter -->
-                <div class="team-member" id="noah">
-                    <img src="https://i.imgur.com/U9mzzXL.jpeg" alt="Noah Porter" />
-                    <div class="team-content">
-                        <div class="name">Noah Porter</div>
-                        <div class="role">Creative Director</div>
-                        <div class="description">
-                            <p>
-                                Noah is the Creative Director, a true
-                                problem-finder with a talent for language
-                                processing.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Harry Alderton -->
-                <div class="team-member" id="harry">
-                    <img src="https://i.imgur.com/2jHXtNr.jpeg" alt="Harry Alderton" />
-                    <div class="team-content">
-                        <div class="name">Harry Alderton</div>
-                        <div class="role">Lead Web Designer</div>
-                        <div class="description">
-                            <p>
-                                Harry is the Lead Web Designer, responsible for
-                                making critical design choices and ensuring that
-                                all elements integrate seamlessly.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script src="script.js"></script>
-    
-    </body>
-
-    </html>
+<script src="script.js"></script>
+</body>
+</html>
