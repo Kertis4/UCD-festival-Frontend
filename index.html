@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>ByteMe</title>
         <style>
             html {
@@ -79,8 +79,12 @@
                 background-repeat: no-repeat;
                 flex: 1;
                 text-align: center;
-                
-            }
+                background:
+        radial-gradient(circle at center, rgba(34, 139, 87, 0.95), rgba(254, 255, 254, 0.75))
+        url("https://www.bordgaisenergytheatre.ie/wp-content/uploads/2023/01/BGET-inserted.jpg") no-repeat center center;
+    background-size: cover;
+}
+            
 
 
             .section3 {
@@ -585,7 +589,7 @@
                 color: #999;
         
             }
-            
+           
  .report-controls {
   display: flex;
   flex-direction: column;
@@ -710,7 +714,6 @@
                 </a>
             </li>
             <li class="navigationitem"><a onclick="scrollToSection('section2')">Generate a Report</a></li>
-            <li class="navigationitem"><a onclick="scrollToSection('section3')">Our Team</a></li>
         </ul>
 
         <div class="section1">
@@ -805,54 +808,22 @@
 
 
 <!-- Checkboxes Section -->
-<div class="checkboxes">
-  <div class="checkbox-wrapper">
-    <input type="checkbox" id="plotDataCheckbox">
-    <label for="plotDataCheckbox">
-      <div class="tick_mark"></div>
-    </label>
-    <span class="checkbox-label">Plot data with report</span>
-  </div>
 
-  <div class="checkbox-wrapper">
+
+ <div class="checkbox-wrapper">
     <input type="checkbox" id="showQueryCheckbox">
     <label for="showQueryCheckbox">
       <div class="tick_mark"></div>
     </label>
-    <span class="checkbox-label">Show querying logic</span>
+    <span class="checkbox-label">Show Code</span>
   </div>
 </div>
 
 <!-- Toggleable Output Section -->
-<div class="output-toggle">
-  <div class="content-box" id="contentDisplay">
-    
-   <div id="plotSection" class="toggle-section">
-  <img id="plotImage"
-       src="{{ img_uri }}"
-       alt="Plot"
-       style="max-width: 100%; height: auto;" />
-</div>
-    <div id="logicSection" class="toggle-section" style="display: none;">
-      <p style="text-align: center; font-size: 18px; color: #555; padding: 40px;">Query placeholder</p>
-    </div>
-  </div>
-</div>
+
 
 <!-- Centered Custom Radio Toggle (OUTSIDE output-toggle) -->
-<div style="display: flex; justify-content: center; margin-top: 20px;">
-  <div class="radio-input">
-    <label>
-      <input type="radio" name="viewToggle" value="plot" checked onclick="showPlot()" />
-      Plot
-    </label>
-    <label>
-      <input type="radio" name="viewToggle" value="logic" onclick="showLogic()" />
-      Query Logic
-    </label>
-    <span class="selection"></span>
-  </div>
-</div>
+
 
 </div>
 <script src="script.js"></script>
