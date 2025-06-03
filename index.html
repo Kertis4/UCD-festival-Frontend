@@ -115,78 +115,7 @@
                 }
             }
 
-            .section3 .team-container {
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-                padding: 20px;
-            }
-
-            .section3 .team-member {
-                background-color: rgb(251, 247, 245);
-                border-radius: 12px;
-                overflow: hidden;
-                padding: 0;
-                width: calc(20% - 20px);
-                min-width: 200px;
-                max-width: 300px;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-                text-align: center;
-            }
-
-            .section3 .team-member img {
-                width: 150px;
-                height: 150px;
-                border-radius: 50%;
-                object-fit: cover;
-                margin: 20px auto;
-                display: block;
-            }
-
-            .section3 .team-content {
-                padding: 20px;
-            }
-
-            .section3 .name {
-                font-size: 1.5em;
-                color: rgba(38, 100, 209, 255);
-                margin-bottom: 10px;
-            }
-
-            .section3 .role {
-                font-size: 1.2em;
-                color: #f6a800;
-                margin-bottom: 20px;
-            }
-
-            .section3 .description {
-                font-size: 1em;
-                color: #777;
-                line-height: 1.6;
-            }
-
-            @media (max-width: 1200px) {
-                .section3 .team-member {
-                    width: calc(33.33% - 20px);
-                }
-            }
-
-            @media (max-width: 768px) {
-                .section3 .team-container {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .section3 .team-member {
-                    width: 90%;
-                    max-width: 400px;
-                }
-            }
-
-            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
+            
             .header {
                 font-family: 'Montserrat', sans-serif;
                 font-size: 4rem;
@@ -238,7 +167,8 @@
                 margin: 0;
                 padding: 0;
                 background: linear-gradient(145deg, #228B57, #F6A800); 
-                height: 50px;
+                height: 6%;
+                max-height: 50px;
                 display: flex;
                 align-items: center;
                 position: fixed;
@@ -264,8 +194,11 @@
             }
 
             .navigationitem a svg {
-                width: 30px;
-                height: 30px;
+             
+                width: 7%;
+                height : 7%;
+                max-width: 30px;
+                max-height: 30px;
             }
 
             .navigationitem a:hover {
